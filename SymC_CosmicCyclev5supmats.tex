@@ -1,0 +1,843 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0.75in,top=0.5in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep,topsep=2pt}
+\setlist[enumerate]{noitemsep,topsep=2pt}
+
+% Define simple table rules if booktabs not available
+\newcommand{\toprule}{\hline}
+\newcommand{\midrule}{\hline}
+\newcommand{\bottomrule}{\hline}
+
+\title{\textbf{Supplementary Materials:\\
+Mathematical Foundations, Perturbation Theory, Elastic-Viscous Dark Medium,\\
+Trajectory Dynamics, Observational Tests, Cross-Domain Validation,\\
+and Falsification Suite}}
+
+\author{Nate Christensen\\
+Independent Researcher\\
+SymC Universe Project, MO, USA\\
+\texttt{NateChristensen@SymCUniverse.com}}
+
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+\clearpage
+
+\section{Purpose and structure}
+
+These Supplementary Materials provide the complete mathematical and conceptual framework supporting the main manuscript. The document consolidates all technical derivations, operator identities, perturbation theory, dynamical systems analysis, observational predictions, and falsification criteria into a single comprehensive reference.
+
+The structure is organized into six major sections:
+
+\begin{itemize}
+\item \textbf{Section 2: Mathematical Foundations} - FLRW framework, growth equation derivation, oscillator mapping, critical identity proof, exceptional point spectral analysis, and redshift calculations.
+
+\item \textbf{Section 3: Perturbation Theory} - Scalar perturbations, effective sound speed, anisotropic stress, gauge structure, and observational handles.
+
+\item \textbf{Section 4: Trajectory Dynamics in $\chi$-Space} - Phase-space flow, fixed points, monotonicity analysis, and rebound conditions.
+
+\item \textbf{Section 5: Elastic-Viscous Dark Medium Framework} - Unified dark sector description, bulk viscosity, elasticity, primordial boundary constraints, and stability requirements.
+
+\item \textbf{Section 6: Observational Tests and Falsification} - Freeze-out alignment, scale factor split, scale-dependent modifications, no-rebound constraints, and experimental roadmap.
+
+\item \textbf{Section 7: Cross-Domain Validation} - Universal oscillator structure, failure topology across domains, unified lifecycle, and three-timescale validation methodology.
+\end{itemize}
+
+Interpretive remarks about substrate physics or early-time conditions are explicitly labeled as hypothesis and separated from mathematical derivations.
+
+\section{Mathematical foundations}
+
+\subsection{Background cosmology and FLRW framework}
+
+A spatially homogeneous and isotropic universe is described by the Friedmann-Lemaitre-Robertson-Walker (FLRW) metric
+\begin{equation}
+ds^2 = -dt^2 + a^2(t) \left[ \frac{dr^2}{1 - k r^2} + r^2 (d\theta^2 + \sin^2\theta\, d\phi^2) \right],
+\end{equation}
+where $a(t)$ is the scale factor and $k = 0, \pm 1$ is the spatial curvature parameter. For this work, focus is on the flat case ($k=0$).
+
+The Einstein equations yield the Friedmann equations:
+\begin{align}
+H^2 &\equiv \left( \frac{\dot{a}}{a} \right)^2 = \frac{8\pi G}{3} \rho_{\text{tot}}, \label{eq:friedmann1} \\
+\frac{\ddot{a}}{a} &= -\frac{4\pi G}{3} (\rho_{\text{tot}} + 3p_{\text{tot}}), \label{eq:friedmann2}
+\end{align}
+where $\rho_{\text{tot}}$ and $p_{\text{tot}}$ are the total energy density and pressure.
+
+\subsection{Component decomposition}
+
+The total stress-energy tensor is decomposed as
+\begin{equation}
+T^{\mu}{}_{\nu} = T^{\mu}{}_{\nu}(\text{radiation}) + T^{\mu}{}_{\nu}(\text{baryons}) + T^{\mu}{}_{\nu}(\text{matter}) + T^{\mu}{}_{\nu}(\text{dark energy}).
+\end{equation}
+
+For each component with equation of state $p_i = w_i \rho_i$, the continuity equation gives
+\begin{equation}
+\dot{\rho}_i + 3H(\rho_i + p_i) = 0,
+\end{equation}
+which implies
+\begin{equation}
+\rho_i \propto a^{-3(1+w_i)}.
+\end{equation}
+
+For matter ($w_m = 0$): $\rho_m \propto a^{-3}$.
+
+For radiation ($w_r = 1/3$): $\rho_r \propto a^{-4}$.
+
+For cosmological constant ($w_\Lambda = -1$): $\rho_\Lambda = \text{const}$.
+
+\subsection{Density parameters}
+
+Define the critical density
+\begin{equation}
+\rho_c \equiv \frac{3H^2}{8\pi G},
+\end{equation}
+and the density parameters
+\begin{equation}
+\Omega_i \equiv \frac{\rho_i}{\rho_c}.
+\end{equation}
+
+In flat $\Lambda$CDM with only matter and cosmological constant at late times,
+\begin{equation}
+\Omega_m + \Omega_\Lambda = 1.
+\end{equation}
+
+\subsection{Redshift evolution}
+
+The redshift $z$ is defined by $1+z = a_0/a$, where $a_0$ is the present-day scale factor (conventionally set to 1). For matter density parameter evolution,
+\begin{equation}
+\Omega_m(z) = \frac{\Omega_{m0}(1+z)^3}{\Omega_{m0}(1+z)^3 + \Omega_{\Lambda 0}},
+\end{equation}
+where subscript 0 denotes present-day values.
+
+\subsection{Linear perturbation theory}
+
+Consider scalar perturbations around the FLRW background in conformal Newtonian gauge:
+\begin{equation}
+ds^2 = -(1 + 2\Psi) dt^2 + a^2(t) (1 - 2\Phi) \delta_{ij} dx^i dx^j,
+\end{equation}
+where $\Psi$ and $\Phi$ are the gravitational potentials.
+
+For matter perturbations, define:
+\begin{itemize}
+\item Density contrast: $\delta \equiv \delta \rho_m / \rho_m$
+\item Velocity divergence: $\theta \equiv \nabla \cdot \vec{v}$
+\item Pressure perturbation: $\delta p$
+\end{itemize}
+
+\subsection{Derivation of the growth equation}
+
+The continuity equation for matter perturbations:
+\begin{equation}
+\dot{\delta} + \theta - 3\dot{\Phi} = 0.
+\end{equation}
+
+The Euler equation for pressureless matter:
+\begin{equation}
+\dot{\theta} + H\theta + \frac{\nabla^2 \Psi}{a^2} = 0.
+\end{equation}
+
+The Poisson equation:
+\begin{equation}
+\frac{\nabla^2 \Phi}{a^2} = 4\pi G \rho_m \delta.
+\end{equation}
+
+In the absence of anisotropic stress, $\Phi = \Psi$. Combining these equations yields the second-order equation for $\delta$:
+\begin{equation}
+\ddot{\delta} + 2H\dot{\delta} - 4\pi G \rho_m \delta = 0.
+\label{eq:growth_derived}
+\end{equation}
+
+This is the fundamental equation governing the linear growth of matter perturbations in standard cosmology.
+
+\subsection{Canonical damped oscillator}
+
+The canonical second-order damped oscillator equation is
+\begin{equation}
+\ddot{x} + \gamma \dot{x} + \omega^2 x = 0,
+\end{equation}
+where:
+\begin{itemize}
+\item $\gamma$ is the damping coefficient
+\item $\omega$ is the natural frequency
+\item $\chi \equiv \gamma/(2|\omega|)$ is the damping ratio
+\end{itemize}
+
+The solution behavior depends on $\chi$:
+\begin{itemize}
+\item $\chi < 1$ (underdamped): Oscillatory decay
+\item $\chi = 1$ (critically damped): Fastest non-oscillatory return to equilibrium
+\item $\chi > 1$ (overdamped): Slow monotonic approach to equilibrium
+\end{itemize}
+
+\subsection{Growth equation mapping}
+
+Comparing Eq. \eqref{eq:growth_derived} with the canonical form:
+\begin{align}
+\gamma_\delta &= 2H, \\
+\omega_\delta^2 &= 4\pi G \rho_m.
+\end{align}
+
+Note: The negative sign in the growth equation indicates an unstable mode (growth rather than decay), but the characteristic timescale structure is preserved. The quantity $|\omega_\delta| = \sqrt{4\pi G \rho_m}$ sets the relevant frequency scale.
+
+\subsection{Definition of cosmological damping ratio}
+
+The cosmological damping ratio is
+\begin{equation}
+\chi_\delta \equiv \frac{\gamma_\delta}{2|\omega_\delta|} = \frac{2H}{2\sqrt{4\pi G \rho_m}} = \frac{H}{\sqrt{4\pi G \rho_m}}.
+\end{equation}
+
+\subsection{Expression in terms of density parameter}
+
+Using the Friedmann equation in flat $\Lambda$CDM:
+\begin{equation}
+H^2 = \frac{8\pi G}{3}(\rho_m + \rho_\Lambda),
+\end{equation}
+and the definition of the matter density parameter:
+\begin{equation}
+\Omega_m = \frac{8\pi G \rho_m}{3H^2},
+\end{equation}
+it follows that
+\begin{equation}
+\rho_m = \frac{3H^2 \Omega_m}{8\pi G}.
+\end{equation}
+
+Substituting into the expression for $\chi_\delta$:
+\begin{equation}
+\chi_\delta = \frac{H}{\sqrt{4\pi G \cdot \frac{3H^2 \Omega_m}{8\pi G}}} = \frac{H}{H\sqrt{\frac{3\Omega_m}{2}}} = \sqrt{\frac{2}{3\Omega_m}}.
+\end{equation}
+
+Therefore,
+\begin{equation}
+\chi_\delta = \sqrt{\frac{2}{3\Omega_m}}.
+\label{eq:chi_omega_final}
+\end{equation}
+
+\subsection{Critical identity derivation}
+
+The critical damping boundary is defined by $\chi_\delta = 1$. From Eq. \eqref{eq:chi_omega_final}:
+\begin{equation}
+\sqrt{\frac{2}{3\Omega_m}} = 1.
+\end{equation}
+
+Squaring both sides:
+\begin{equation}
+\frac{2}{3\Omega_m} = 1 \quad \Longrightarrow \quad \Omega_m = \frac{2}{3}.
+\end{equation}
+
+The deceleration parameter is defined as
+\begin{equation}
+q \equiv -\frac{\ddot{a}a}{\dot{a}^2}.
+\end{equation}
+
+From the second Friedmann equation \eqref{eq:friedmann2}:
+\begin{equation}
+\frac{\ddot{a}}{a} = -\frac{4\pi G}{3}(\rho_{\text{tot}} + 3p_{\text{tot}}).
+\end{equation}
+
+Using $H^2 = (8\pi G/3)\rho_{\text{tot}}$ and $p_i = w_i \rho_i$:
+\begin{equation}
+q = \frac{1}{2}\sum_i \Omega_i(1 + 3w_i).
+\end{equation}
+
+For flat $\Lambda$CDM with matter ($w_m = 0$) and cosmological constant ($w_\Lambda = -1$):
+\begin{equation}
+q = \frac{1}{2}\Omega_m(1+0) + \frac{1}{2}\Omega_\Lambda(1-3) = \frac{1}{2}\Omega_m - \Omega_\Lambda.
+\end{equation}
+
+Using $\Omega_\Lambda = 1 - \Omega_m$:
+\begin{equation}
+q = \frac{1}{2}\Omega_m - (1-\Omega_m) = \frac{3}{2}\Omega_m - 1.
+\end{equation}
+
+The transition from deceleration to acceleration occurs at $q = 0$:
+\begin{equation}
+\frac{3}{2}\Omega_m - 1 = 0 \quad \Longrightarrow \quad \Omega_m = \frac{2}{3}.
+\end{equation}
+
+Both $\chi_\delta = 1$ and $q = 0$ occur at $\Omega_m = 2/3$. Therefore, in flat $\Lambda$CDM:
+\begin{equation}
+\boxed{\chi_\delta = 1 \iff q = 0 \iff \Omega_m = \frac{2}{3}}.
+\end{equation}
+
+This is an exact mathematical identity within the model.
+
+\subsection{Redshift calculation}
+
+For flat $\Lambda$CDM, the evolution of $\Omega_m$ with redshift is
+\begin{equation}
+\Omega_m(z) = \frac{\Omega_{m0}(1+z)^3}{\Omega_{m0}(1+z)^3 + (1-\Omega_{m0})}.
+\end{equation}
+
+Setting $\Omega_m(z_\chi) = 2/3$:
+\begin{equation}
+\frac{2}{3} = \frac{\Omega_{m0}(1+z_\chi)^3}{\Omega_{m0}(1+z_\chi)^3 + (1-\Omega_{m0})}.
+\end{equation}
+
+Cross-multiplying and simplifying:
+\begin{equation}
+(1+z_\chi)^3 = \frac{2(1-\Omega_{m0})}{\Omega_{m0}}.
+\end{equation}
+
+\begin{equation}
+1+z_\chi = \left(\frac{2(1-\Omega_{m0})}{\Omega_{m0}}\right)^{1/3}.
+\end{equation}
+
+For Planck 2018 cosmology, $\Omega_{m0} \simeq 0.315$:
+\begin{equation}
+1+z_\chi = \left(\frac{2(1-0.315)}{0.315}\right)^{1/3} = \left(\frac{1.37}{0.315}\right)^{1/3} \simeq 1.67.
+\end{equation}
+
+Therefore, $z_\chi \simeq 0.67$.
+
+\subsection{Degeneracy of characteristic exponents and the critical boundary}
+\label{sec:ep_clarified}
+
+The linear growth equation,
+\begin{equation}
+\ddot{\delta} + 2H\dot{\delta} - 4\pi G\rho_m \delta = 0,
+\end{equation}
+corresponds to a second-order operator with an unstable sign structure, rather than a dissipative restoring force. Seeking solutions of the form $\delta \propto e^{\lambda t}$ yields the characteristic equation
+\begin{equation}
+\lambda^2 + 2H\lambda - 4\pi G\rho_m = 0,
+\end{equation}
+with roots
+\begin{equation}
+\lambda_{\pm} = -H \pm \sqrt{H^2 + 4\pi G\rho_m}.
+\end{equation}
+
+Introducing the cosmological damping ratio $\chi_\delta \equiv H/\sqrt{4\pi G\rho_m}$, the discriminant may be written as $H^2(1 + \chi_\delta^{-2})$. For proper comparison with the standard damped oscillator, consider instead the equivalent form with $\omega^2 = -4\pi G\rho_m$, giving discriminant $H^2(1 - \chi_\delta^{-2})$. Three regimes follow:
+\begin{itemize}[leftmargin=*]
+\item $\chi_\delta < 1$: the discriminant is negative and the characteristic exponents form a complex conjugate pair with positive real growth component, corresponding to unstable modes with oscillatory phase structure.
+\item $\chi_\delta = 1$: the discriminant vanishes and the two characteristic exponents coincide at $\lambda = -H$. The operator becomes defective, admitting a single eigenvalue with reduced independent solution structure.
+\item $\chi_\delta > 1$: the discriminant is positive and the characteristic exponents are real and distinct, corresponding to purely monotonic growth or decay modes.
+\end{itemize}
+
+The condition $\chi_\delta = 1$ therefore marks a degeneracy of characteristic exponents in the linear growth operator. In the language of non-Hermitian dynamics, this corresponds to an Exceptional-Point-like transition, generalized here to an unstable second-order system. Importantly, no claim is made that the growth operator behaves as a stable damped oscillator; the critical boundary instead signifies the loss of complex phase structure in the unstable growth modes.
+
+This degeneracy coincides exactly, in flat $\Lambda$CDM, with the kinematic transition $q = 0$. The physical significance of the boundary is thus not oscillatory decay, but the transition from a regime supporting phase-rich growth to one in which structure evolution becomes strictly monotonic and increasingly suppressed.
+
+\subsection{Classification of control failure modes}
+
+Based on the spectral analysis of the growth operator (Sec. 2.13), the stability failure modes of the cosmic system are classified:
+
+\begin{itemize}
+    \item \textbf{Type A Failure (Underdamped Instability):} Occurs when $\chi_\delta < 1$ and the real part of the eigenvalues is positive ($\text{Re}(\lambda) > 0$) while $\text{Im}(\lambda) \neq 0$. This represents unbounded oscillatory growth, characteristic of Jeans instability in the early matter era.
+    \item \textbf{Type B Failure (Overdamped Rigidity):} Occurs when $\chi_\delta > 1$ and the eigenvalues are real and distinct ($\text{Im}(\lambda) = 0$). This represents a loss of restoring force dominance. The system response becomes monotonic, and the capacity for complex structure assembly freezes out.
+\end{itemize}
+
+The transition at $z \approx 0.7$ is the global topological shift from a Type A growth regime to a Type B terminal rigidity regime.
+
+\subsection{Asymptotic behavior}
+
+In flat $\Lambda$CDM, as $a \to \infty$ (equivalently, $z \to -1$ or $t \to \infty$):
+\begin{itemize}
+\item $\rho_m \propto a^{-3} \to 0$
+\item $\rho_\Lambda = \text{const}$
+\item $H \to H_\Lambda = \sqrt{\Lambda/3} = \text{const}$
+\end{itemize}
+
+Therefore,
+\begin{equation}
+\chi_\delta = \frac{H}{\sqrt{4\pi G \rho_m}} \propto \frac{1}{\sqrt{a^{-3}}} = a^{3/2} \to \infty.
+\end{equation}
+
+Alternatively, in terms of density parameters:
+\begin{equation}
+\chi_\delta = \sqrt{\frac{2}{3\Omega_m}} \to \infty \quad \text{as} \quad \Omega_m \to 0.
+\end{equation}
+
+The trajectory $\chi_\delta(a)$ is monotonically increasing for $a > a_\chi$ (where $\chi_\delta = 1$). There is no mechanism within flat $\Lambda$CDM for $\chi_\delta$ to decrease again. This is the no-rebound constraint.
+
+\subsection{Model dependence}
+
+If the dark energy equation of state parameter $w$ is not exactly $-1$, the relation between $\chi_\delta = 1$ and $q = 0$ is modified. For general $w$:
+\begin{equation}
+q = \frac{1}{2}\Omega_m + \frac{1}{2}\Omega_{DE}(1 + 3w).
+\end{equation}
+
+For $q = 0$ with $\Omega_{DE} = 1 - \Omega_m$:
+\begin{equation}
+\Omega_m = \frac{1+3w}{3w}.
+\end{equation}
+
+Meanwhile, $\chi_\delta = 1$ still requires $\Omega_m = 2/3$. The two conditions coincide only when
+\begin{equation}
+\frac{1+3w}{3w} = \frac{2}{3} \quad \Longrightarrow \quad w = -1.
+\end{equation}
+
+Therefore, the exact identity $\chi_\delta = 1 \Leftrightarrow q = 0$ holds only for $w = -1$ (cosmological constant). Departures from $w = -1$ create a measurable split, providing a falsifiable test.
+
+\section{Perturbation theory and linear structure}
+
+\subsection{Perturbation variables}
+
+Perturbations in the dark medium include:
+\begin{itemize}
+\item Density contrast: $\delta_d = \delta\rho_d / \rho_d$
+\item Velocity divergence: $\theta_d = \nabla \cdot \vec{v}_d$
+\item Pressure perturbation: $\delta p_d$
+\item Anisotropic stress: $\pi_d$
+\end{itemize}
+
+\subsection{Effective sound speed}
+
+The effective sound speed in the rest frame is
+\begin{equation}
+c_{\text{eff}}^2 = \left(\frac{\delta p_d}{\delta \rho_d}\right)_{\text{rest}}.
+\end{equation}
+
+Decomposition:
+\begin{equation}
+\delta p_d = c_s^2 \delta\rho_d + \delta p_{\text{elastic}} + \delta p_{\text{visc}},
+\end{equation}
+where $c_s^2 = \partial p_d / \partial \rho_d$ is the adiabatic sound speed.
+
+\subsection{Perturbation equations}
+
+The continuity and Euler equations for the dark medium perturbations in Fourier space are
+\begin{align}
+\dot{\delta}_d + (1+w_{d,\text{eff}})(\theta_d - 3\dot{\Phi}) + 3H(c_{\text{eff}}^2 - w_{d,\text{eff}})\delta_d &= 0, \\
+\dot{\theta}_d + H(1 - 3w_{d,\text{eff}})\theta_d - \frac{k^2}{a^2}\left(\frac{c_{\text{eff}}^2}{1+w_{d,\text{eff}}}\delta_d + \Psi\right) + \text{terms} &= 0,
+\end{align}
+where the additional terms include contributions from shear viscosity and elasticity.
+
+\subsection{Anisotropic stress}
+
+Elasticity and shear viscosity generate anisotropic stress:
+\begin{equation}
+k^2(\Phi - \Psi) = 12\pi G a^2 (\rho_d + p_{d,\text{eff}})\sigma_d,
+\end{equation}
+where $\sigma_d$ is related to $\pi_d$.
+
+\subsection{Observational handles}
+
+\begin{itemize}
+\item Redshift-space distortions (RSD): $f\sigma_8(z)$
+\item Weak lensing: $\Phi + \Psi$
+\item Gravitational slip parameter: $\eta = \Phi/\Psi$
+\end{itemize}
+
+\section{Trajectory dynamics in $\chi$-space}
+
+\subsection{Definition}
+
+\begin{equation}
+\chi_\delta(a) = \sqrt{\frac{2}{3\Omega_m(a)}}.
+\end{equation}
+
+\subsection{Flow equation}
+
+Using
+\begin{equation}
+\Omega_m(a) = \frac{\Omega_{m0}a^{-3}}{\Omega_{m0}a^{-3} + (1-\Omega_{m0})},
+\end{equation}
+the derivative is
+\begin{equation}
+\frac{d\Omega_m}{d\ln a} = -3\Omega_m(1 - \Omega_m).
+\end{equation}
+
+Therefore,
+\begin{equation}
+\frac{d\chi_\delta}{d\ln a} = -\frac{1}{2}\chi_\delta \frac{1}{\Omega_m}\frac{d\Omega_m}{d\ln a} = \frac{3}{2}\chi_\delta(1 - \Omega_m).
+\end{equation}
+
+Using $\Omega_m = 2/(3\chi_\delta^2)$:
+\begin{equation}
+\frac{d\chi_\delta}{d\ln a} = \frac{3}{2}\chi_\delta\left(1 - \frac{2}{3\chi_\delta^2}\right) = \frac{3}{2}\chi_\delta\left(\frac{3\chi_\delta^2 - 2}{3\chi_\delta^2}\right).
+\end{equation}
+
+Simplifying:
+\begin{equation}
+\frac{d\chi_\delta}{d\ln a} = \frac{1}{2\chi_\delta}(3\chi_\delta^2 - 2).
+\end{equation}
+
+\subsection{Fixed points}
+
+Setting $d\chi_\delta/d\ln a = 0$:
+\begin{equation}
+3\chi_\delta^2 - 2 = 0 \quad \Longrightarrow \quad \chi_\delta = \sqrt{\frac{2}{3}}.
+\end{equation}
+
+This corresponds to $\Omega_m = 1$ (matter-dominated epoch).
+
+The critical point $\chi_\delta = 1$ is not a fixed point but a transition point.
+
+The future attractor is $\chi_\delta \to \infty$ as $\Omega_m \to 0$.
+
+\subsection{Monotonicity}
+
+For $\chi_\delta > \sqrt{2/3}$ (which includes all epochs after matter-radiation equality):
+\begin{equation}
+3\chi_\delta^2 - 2 > 0 \quad \Longrightarrow \quad \frac{d\chi_\delta}{d\ln a} > 0.
+\end{equation}
+
+Thus the trajectory is strictly monotonically increasing.
+
+\subsection{Rebound condition}
+
+A rebound requires $d\chi_\delta/d\ln a < 0$, which implies $3\chi_\delta^2 - 2 < 0$ or $\chi_\delta < \sqrt{2/3}$.
+
+This would require $\Omega_m > 1$, which cannot occur in flat $\Lambda$CDM with $w = -1$.
+
+For dynamical dark energy with $w \neq -1$, the trajectory can be modified, potentially allowing different behavior.
+
+\section{Elastic-viscous dark medium framework}
+
+\subsection{Effective dark sector fluid}
+
+At the background level, model the dark sector as a fluid with energy density $\rho_d$ and effective pressure $p_{d,\text{eff}}$:
+\begin{equation}
+T^{\mu}{}_{\nu}(\text{dark}) = \text{diag}(-\rho_d, p_{d,\text{eff}}, p_{d,\text{eff}}, p_{d,\text{eff}}).
+\end{equation}
+
+The conservation equation gives
+\begin{equation}
+\dot{\rho}_d + 3H(\rho_d + p_{d,\text{eff}}) = 0.
+\end{equation}
+
+Decompose the effective pressure as
+\begin{equation}
+p_{d,\text{eff}} = p_d + p_{\text{visc}} + p_{\text{elastic}},
+\end{equation}
+where $p_d$ is equilibrium pressure, $p_{\text{visc}}$ arises from bulk viscosity, and $p_{\text{elastic}}$ from elastic response.
+
+\subsection{Bulk viscosity}
+
+In an FLRW background, bulk viscosity contributes
+\begin{equation}
+p_{\text{visc}} = -3\zeta H,
+\end{equation}
+where $\zeta \ge 0$ is the bulk viscosity coefficient.
+
+The effective equation-of-state parameter is
+\begin{equation}
+w_{d,\text{eff}} = \frac{p_{d,\text{eff}}}{\rho_d} = \frac{p_d - 3\zeta H + p_{\text{elastic}}}{\rho_d}.
+\end{equation}
+
+A medium with underlying $p_d \approx 0$ (matter-like) can exhibit effective negative pressure if viscous and elastic terms dominate at late times.
+
+\subsection{Elasticity}
+
+The bulk modulus $K$ is
+\begin{equation}
+K = -V \frac{\partial p_d}{\partial V}.
+\end{equation}
+
+The volumetric strain relative to a reference scale factor $a_0$ is
+\begin{equation}
+\epsilon = \frac{a^3 - a_0^3}{a_0^3}.
+\end{equation}
+
+The elastic energy density is
+\begin{equation}
+\rho_{\text{elastic}} = \frac{1}{2}K\epsilon^2.
+\end{equation}
+
+The elastic pressure contribution is
+\begin{equation}
+p_{\text{elastic}} = -K\epsilon,
+\end{equation}
+which acts as effective tension opposing expansion if $K>0$.
+
+\subsection{Primordial boundary constraints}
+
+The macroscopic properties of the dark medium are constrained by boundary conditions at a primordial interface $\Sigma$ between a prior phase and the current cosmic cycle.
+
+Matching conditions:
+\begin{align}
+[\rho_d]_\Sigma &= \Delta \rho_d, \\
+[p_{d,\text{eff}}]_\Sigma &= \Delta p_{d,\text{eff}}.
+\end{align}
+
+Allowed bands:
+\begin{align}
+w_{\min} \le w_\Sigma \le w_{\max}, \\
+K_{\min} \le K_\Sigma \le K_{\max}, \\
+0 \le \zeta_\Sigma \le \zeta_{\max}.
+\end{align}
+
+These constraints ensure the medium is neither too stiff nor too dissipative at the onset of the current cycle.
+
+\subsection{Unified interpretation}
+
+Within this framework:
+\begin{itemize}
+\item \textbf{Dark matter behavior} corresponds to the inertial and clustering aspects of the medium when $p_{d,\text{eff}}\approx 0$ and viscous or elastic effects are negligible at relevant scales and epochs.
+\item \textbf{Dark energy behavior} corresponds to the effective negative pressure arising from bulk viscosity and elastic tension at large scales and late times.
+\end{itemize}
+
+The distinction between dark matter and dark energy is emergent and regime-dependent, not fundamental.
+
+\section{Observational tests and falsification}
+
+\subsection{Freeze-out alignment}
+
+Test whether
+\begin{equation}
+\frac{d^2}{dz^2}f\sigma_8(z)
+\end{equation}
+changes sign near $z_\chi$.
+
+The peak of cosmic star formation rate density ($z_{\text{SFR, peak}} \approx 1.9$) should correlate with $\chi_{\delta}(z) \approx 0.8$, while the steep decline ($z < 1$) should track $\chi_{\delta}(z)$ approaching and crossing 1.
+
+\textbf{Current observational precision:} $\sigma(f\sigma_8) \sim 5\%$-$10\%$ at $z \sim 0.5$-$1.0$.
+
+\textbf{Required precision:} Detection of second derivative sign change requires $\sigma(f\sigma_8) \lesssim 2\%$ with dense redshift sampling ($\Delta z \lesssim 0.1$).
+
+\subsection{Growth function suppression}
+
+Define the suppression factor
+\begin{equation}
+S(z) \equiv \frac{f\sigma_8(z)_{\text{observed}}}{f\sigma_8(z)_{\Lambda\text{CDM}}}.
+\end{equation}
+
+The framework predicts $S(z)$ should show a characteristic bend at $z_\chi$, with
+\begin{equation}
+\frac{d^2S}{dz^2}\bigg|_{z_\chi} \neq 0.
+\end{equation}
+
+\textbf{Current observational status:} Some tension exists between early-time (CMB) and late-time (LSS) measurements of $\sigma_8$, with $S_8 \equiv \sigma_8(\Omega_m/0.3)^{0.5}$ showing $\sim 2$-$3\sigma$ discrepancy.
+
+\textbf{Prediction:} If real, the $S_8$ tension should correlate with redshift in a manner consistent with $\chi_\delta(z)$ evolution.
+
+\subsection{Background-growth split}
+
+Define:
+\begin{align}
+A_{\text{bg}}(z) &= -\frac{\ddot{a}}{aH^2}, \\
+A_{\text{gr}}(z) &= -\frac{\ddot{\delta}}{\delta H^2}.
+\end{align}
+
+A split localized near $z_\chi$ is predicted.
+
+\textbf{Measurement approach:} Combine SNe Ia + BAO (background) with RSD + weak lensing (growth). Current surveys provide $\sim 20$ independent redshift bins over $0 < z < 2$.
+
+\subsection{Scale-dependent modifications}
+
+Define
+\begin{equation}
+\mu(k,z) = \frac{G_{\text{eff}}(k,z)}{G} - 1.
+\end{equation}
+
+Then
+\begin{equation}
+\chi_\delta(k,z) = \chi_{\delta,\mathrm{GR}}(z)[1+\mu(k,z)]^{-1/2}.
+\end{equation}
+
+The modified growth parameter should exhibit specific redshift evolution:
+\begin{equation}
+\mu(k,z) \approx \mu_0(k)\left[1 - \exp\left(-\frac{(z - z_\chi)^2}{2\sigma_z^2}\right)\right],
+\end{equation}
+with $\sigma_z \approx 0.3$ characterizing the transition width.
+
+\textbf{Current constraints:} $\mu = 0 \pm 0.1$ at $z \sim 0.5$, scale-independent within errors.
+
+\textbf{Required precision:} DESI/Euclid aim for $\sigma(\mu) \sim 0.01$-$0.03$, sufficient to detect $|\mu_0| \gtrsim 0.05$ with $3\sigma$ significance.
+
+\subsection{The $\Delta a$ split}
+
+Define $\Delta a \equiv a_{q=0} - a_{\chi=1}$. In standard $\Lambda$CDM ($w=-1$), $\Delta a = 0$.
+
+For $w \neq -1$:
+\begin{equation}
+a_{q=0} \neq a_{\chi=1} \quad \Longrightarrow \quad \Delta a \neq 0.
+\end{equation}
+
+With current constraints $w = -1.03 \pm 0.03$, this implies
+\begin{equation}
+|\Delta a| \lesssim 0.007 \quad (\text{current precision}).
+\end{equation}
+
+Future surveys (DESI, Euclid, Roman) aim for $\sigma(w) \sim 0.01$ or better, enabling tests at the $\Delta a \sim 0.003$ level.
+
+\textbf{Systematic concerns:} Requires independent, clean measurements of both $q(z)$ and $\chi_\delta(z)$ transitions. Systematic errors (e.g., photometric calibration, nonlinear corrections) must be controlled to $\lesssim 1\%$.
+
+\subsection{No-rebound test}
+
+If data show
+\begin{equation}
+\frac{d\chi_\delta}{dz} > 0 \quad \text{at } z<0,
+\end{equation}
+then $w=-1$ is falsified.
+
+The effective equation of state must satisfy $w \ge -1$ in the future. A phantom excursion ($w \ll -1$) is incompatible with the Type B failure mode.
+
+\textbf{Current constraints:} High-$z$ SNe Ia and BAO constrain $w(z>1)$ but provide limited leverage on future evolution. Theoretical priors typically assume $w(z) = w_0 + w_a(1-a)$.
+
+\textbf{Model-independent test:} Reconstruct $\chi_\delta(z)$ nonparametrically from $f\sigma_8(z)$ measurements. Any decrease in $\chi_\delta$ toward future epochs violates no-rebound and falsifies constant-$\Lambda$ models.
+
+\subsection{Measurement strategy}
+
+\begin{enumerate}
+\item Construct background acceleration proxy from distance-redshift relations. Fit for $z_{q=0}$.
+
+\item Construct growth suppression proxy from $f\sigma_8(z)$ measurements. Identify transition redshift $z_{\chi=1}$.
+
+\item Compute $\Delta z = z_{q=0} - z_{\chi=1}$. Convert to $\Delta a$.
+
+\item Test consistency with $\Delta a = 0$ at current precision.
+
+\item Examine $f\sigma_8(z)$ for second-derivative features near $z_\chi$.
+
+\item Search for scale-dependent $\mu(k,z)$ correlated with $\chi_\delta(z)$ evolution.
+\end{enumerate}
+
+\subsection{Timeline and experimental roadmap}
+
+\textbf{Current constraints (2025):} $w = -1.03 \pm 0.03$, $\Omega_{m0} = 0.315 \pm 0.007$, $S_8$ tension $\sim 2$-$3\sigma$.
+
+\textbf{Near-term (2026-2028):} 
+\begin{itemize}
+\item DESI Year 1: $\sigma(w) \sim 0.04$, $\sim 40$ million galaxies, $0.2 < z < 2$
+\item Euclid Early Release: $\sim 10^9$ galaxies eventually, weak lensing + photometric redshifts
+\item Rubin Observatory LSST: Deep photometry, transient discovery
+\end{itemize}
+
+\textbf{Definitive tests (2029-2035):}
+\begin{itemize}
+\item DESI 5-year: $\sigma(w) \sim 0.02$, $\sigma(\mu) \sim 0.02$
+\item Euclid full mission: $\sigma(w_0) \sim 0.02$, $\sigma(w_a) \sim 0.1$, $\sigma(\gamma) \sim 0.02$
+\item Roman Space Telescope: $\sigma(w) \sim 0.01$, high-$z$ SNe Ia
+\item CMB-S4: Lensing + ISW cross-correlations, $\sigma(S_8) \sim 0.2\%$
+\end{itemize}
+
+\section{Cross-domain validation}
+
+\subsection{Universal second-order operator structure}
+
+The fundamental equation governing dynamics across all domains is
+\begin{equation}
+\ddot{x} + \gamma\dot{x} + \omega^2 x = 0.
+\end{equation}
+
+The dimensionless damping ratio
+\begin{equation}
+\chi \equiv \frac{\gamma}{2|\omega|}
+\end{equation}
+provides a universal separatrix between qualitatively different dynamical regimes.
+
+\subsection{Three dynamical regimes}
+
+\begin{enumerate}
+\item Underdamped ($\chi < 1$): Complex eigenvalues, oscillatory response, high sensitivity to perturbations.
+\item Critically damped ($\chi \approx 1$): Degenerate eigenvalues, fastest non-oscillatory return to equilibrium, maximum information transfer efficiency.
+\item Overdamped ($\chi > 1$): Real eigenvalues, monotonic response, suppressed sensitivity.
+\end{enumerate}
+
+\subsection{Cosmological mapping}
+
+The cosmological growth equation
+\begin{equation}
+\ddot{\delta} + 2H\dot{\delta} - 4\pi G \rho_m \delta = 0
+\end{equation}
+maps to the canonical form with
+\begin{align}
+\gamma_\delta &= 2H \quad (\text{expansion friction}), \\
+\omega_\delta^2 &= 4\pi G \rho_m \quad (\text{gravitational stiffness}).
+\end{align}
+
+\subsection{Trajectory through $\chi$-space}
+
+\begin{itemize}
+\item Early times (CMB era): $\chi_\delta < 1$. Underdamped regime. Perturbations grow, structure formation active.
+\item Intermediate times ($z \sim 2$ to $z \sim 0.7$): $\chi_\delta$ approaches 1. Peak structure formation efficiency.
+\item Transition ($z \approx 0.7$): $\chi_\delta = 1$. Exceptional Point crossing. Onset of acceleration.
+\item Late times ($z < 0.7$): $\chi_\delta > 1$. Overdamped regime. Structure formation suppressed.
+\item Asymptotic future: $\chi_\delta \to \infty$. Complete freeze-out.
+\end{itemize}
+
+\subsection{The stability cycle: Injection to freeze-out}
+
+The cosmic trajectory is defined by two boundary conditions:
+
+\begin{enumerate}
+    \item \textbf{Initialization (Frequency Injection):} The pre-universe (inflation) was a vacuum-dominated overdamped state ($\chi \to \infty$). The transition to the structure-forming era was not a continuous evolution but a discrete frequency injection event (reheating). The decay of the inflaton field transferred energy into matter degrees of freedom ($\rho_m$), effectively injecting stiffness ($\omega^2 \propto \rho_m$) into the system. This reset the stability ratio from $\chi \gg 1$ to $\chi \ll 1$.
+    
+    \item \textbf{Termination (Viscous Dominance):} The current acceleration phase differs from inflation. While both are overdamped ($\chi > 1$), the vacuum energy today is stable (non-decaying). Lacking a decay channel to inject new frequency (matter), the system cannot reset. This distinguishes the fertile overdamping of inflation from the terminal overdamping of dark energy.
+\end{enumerate}
+
+This asymmetry explains why inflation was temporary while current acceleration appears permanent: inflation contained its own frequency injection mechanism (inflaton decay), whereas the cosmological constant does not.
+
+\subsection{Type B failure}
+
+The cosmological trajectory exhibits Type B (overdamped or rigid) failure. The damping term $\gamma = 2H$ approaches a constant $2H_\Lambda$ while the restoring force $\omega^2 = 4\pi G \rho_m$ decays as $a^{-3}$. There is no feedback mechanism to down-regulate damping.
+
+\subsection{Cross-domain examples}
+
+\begin{table}[h]
+\centering
+\caption{Cross-domain validation of Type B failure structure}
+\begin{tabular}{@{}lllll@{}}
+\toprule
+Domain & Drive ($\omega$) & Damping ($\gamma$) & Failure Mode & Current State \\ \midrule
+Cosmology & Gravity & Expansion & Type B (Rigid) & Frozen flow ($\chi > 1$) \\
+Parkinson & Dopamine & Inhibition & Type B (Rigid) & Akinesia ($\chi > 1$) \\
+Markets & Orders & Liquidity & Type B (Trap) & Absorption ($\chi > 1$) \\
+Seismology & Stress & Friction & Type B (Locked) & Aseismic creep \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent\textit{Note:} Full cross-domain analysis including quantum field theory, neuroscience, market dynamics, and seismology is available in N. Christensen, Symmetrical Convergence: A Universal Critical-Damping Principle, Zenodo (2025).
+
+\subsection{Universal lifecycle}
+
+All complex systems evolve through three phases:
+\begin{enumerate}
+\item Chaos ($\chi < 1$): High sensitivity, oscillatory behavior, rapid exploration.
+\item Optimization ($\chi \approx 1$): Balanced response, efficient information transfer, maximum performance.
+\item Rigidity ($\chi > 1$): Suppressed response, monotonic decay, eventual freezing.
+\end{enumerate}
+
+\subsection{Three-timescale validation}
+
+A critical methodological point: three timescales are essential when validating $\chi$ against any boundary condition.
+\begin{itemize}
+\item Short-term (transient or noise): Fluctuations that do not represent true system state.
+\item Medium-term (actionable signal): The timescale of meaningful transitions.
+\item Long-term (structural anchor): The background against which change is measured.
+\end{itemize}
+
+The key insight: crossing does not equal relaxation. Verification requires sustained residence in attractor bands, not merely passing through.
+
+\appendix
+\section{Appendix A: Derivation of Information Efficiency at Criticality}
+\label{app:efficiency}
+
+To justify the claim that $\chi \approx 1$ represents a thermodynamic optimum for structure formation, we summarize the derivation from the Adaptive Inference Framework (AIF) \cite{ChristensenAIF}.
+Consider a linear detector (or structure) coupled to a stochastic environment. The information efficiency $\eta$ is defined as the ratio of Information Rate ($I$) to Thermodynamic Cost ($\Sigma$, entropy production).
+
+\subsection{The Efficiency Functional}
+For a second-order system governed by $\ddot{x} + \gamma\dot{x} + \omega^2 x = \xi(t)$, the efficiency functional $\eta(\chi)$ is constructed from three competing scaling laws:
+\begin{enumerate}
+    \item \textbf{Information Gain ($I$):} Scales with the system's susceptibility bandwidth. For $\chi < 1$, gain is high but corrupted by ringing; for $\chi > 1$, bandwidth collapses as $1/\chi$.
+    \item \textbf{Dissipation ($\Sigma$):} The thermodynamic cost of maintaining the channel scales with the damping rate $\gamma \propto \chi\omega$.
+    \item \textbf{Instability Penalty ($\Pi$):} A penalty for overshoot or error variance, which diverges as $\chi \to 0$.
+\end{enumerate}
+
+The resulting efficiency form is:
+\begin{equation}
+\eta(\chi) = \frac{I(\chi)}{\Sigma(\chi) + \Pi(\chi)} \approx \frac{\chi}{1 + \alpha \chi^2 + \beta \chi^{-2}}.
+\end{equation}
+Analysis of this functional reveals a strict local maximum at the critical boundary:
+\begin{equation}
+\frac{d\eta}{d\chi}\bigg|_{\chi \approx 1} = 0, \quad \frac{d^2\eta}{d\chi^2}\bigg|_{\chi \approx 1} < 0.
+\end{equation}
+
+\subsection{Cosmological Implication}
+In the cosmic context, this derivation implies that the epoch of structure formation ($z \sim 2$ to $z \sim 0.7$) corresponds to the unique thermodynamic window where the vacuum substrate supports complex computation.
+\begin{itemize}
+    \item \textbf{Early Universe ($\chi \ll 1$):} High penalty $\Pi$ (instability/noise).
+    \item \textbf{Late Universe ($\chi \gg 1$):} High cost $\Sigma$ and low bandwidth $I$ (freezing).
+\end{itemize}
+The coincidence of observers with $\chi_\delta \approx 1$ is therefore a selection effect: observers exist only when the substrate allows efficient information processing.
+\end{document}
