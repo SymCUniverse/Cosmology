@@ -1,0 +1,371 @@
+\documentclass[11pt]{article}
+
+\usepackage[top=0.50in,bottom=0.75in,left=0.75in,right=0.75in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{bm}
+\usepackage{cite}
+\usepackage{booktabs}
+
+\title{Structural Mapping of Linear Damping Operators Across Cosmological Growth and Black Hole Ringdown}
+
+\author{Nate Christensen\\Independent Researcher\\SymC Research Project}
+
+\date{02 February 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+The dimensionless damping ratio $\chi=\gamma/(2|\omega|)$ governs qualitative transitions in linear dissipative systems. Previous work established $\chi=1$ as a critical boundary in cosmology, with the exact identity $\chi_\delta=1 \Leftrightarrow q=0$ in flat $\Lambda$CDM. This framework extends to black hole physics through a conservative, spectrum-first approach. An observational ringdown ratio $\chi_{\text{ring}}\equiv \omega_I/|\omega_R|$ is defined from quasinormal mode frequencies. Near extremality, Kerr spectra reorganize into families with parametrically small damping ($\chi_{\text{ring}}\to 0$), creating a structural separatrix in the linear response. A phenomenological substrate interpretation is introduced where gravity emerges as a stiffness response, providing a consistent operator-level bookkeeping across cosmological and black hole systems. A clear separation is maintained between exact spectral identities and conjectural microphysical interpretation, ensuring falsifiability while exploring deeper unification. All claims are formulated at the level of linear operators and spectral mappings derived from standard equations; no modification of general relativity or $\Lambda$CDM is assumed.
+
+\end{abstract}
+
+\section{Introduction: From critical damping to horizons}
+
+The damping ratio framework is built around the dimensionless parameter
+\begin{equation}
+  \chi \equiv \frac{\gamma}{2|\omega|},
+\end{equation}
+for a mode governed by a second order linear operator
+\begin{equation}
+  \ddot{x}+\gamma \dot{x}+\omega^2 x=0.
+\end{equation}
+The value $\chi=1$ marks the critical boundary separating underdamped ($\chi<1$) from overdamped ($\chi>1$) response. In effective open dynamics, the same boundary appears as a spectral transition: the retarded kernel changes from oscillatory decay to monotone relaxation, and the underlying characteristic structure exhibits pole coalescence.
+
+Previous work established the operator-level formulation of the $\chi=1$ boundary in open dynamics and its exact realization in flat $\Lambda$CDM cosmology; the mapped cosmological ratio $\chi_\delta$ for linear structure growth crosses unity exactly when the deceleration parameter satisfies $q=0$.~\cite{ChristensenCosmic,ChristensenQFT,ChristensenGaps} This paper extends the same boundary language to black holes by focusing first on the ringdown spectrum, then introducing a phenomenological substrate interpretation layer as a possible unifying interpretation.
+
+\section{Theoretical Framework: Gravity as Vacuum Stiffness}
+
+To unify gravitational dynamics with the cosmic acceleration framework, the vacuum is treated as an effective viscoelastic substrate described by four mechanical descriptors: strain ($\epsilon$), viscosity ($\gamma$), stiffness ($\kappa$), and relaxation ($\tau$). This language is used as a model layer and bookkeeping device for cross-domain mappings, not as a claim that general relativity requires a preferred medium.
+
+\subsection{The Type A failure mode: resonance disaster}
+The stability of a linear response mode is governed by the damping ratio $\chi=\gamma/(2|\omega|)$. The cosmic trajectory can be discussed in terms of two limiting regimes:
+\begin{itemize}
+    \item \textbf{Type B regime (cosmic acceleration limit):} viscosity dominates stiffness ($\gamma\gg |\omega|\Rightarrow \chi\to\infty$). In the mapped growth operator this corresponds to the late time limit where the matter sourced restoring term dilutes and the effective Hubble friction dominates.
+    \item \textbf{Type A regime (black hole limit):} stiffness dominates viscosity ($|\omega|\gg \gamma\Rightarrow \chi\to 0$). In this regime decay is weak compared to oscillation and the response behaves as a long lived resonator.
+\end{itemize}
+In this framework, a black hole is discussed as a region where the effective stiffness scale becomes extreme relative to the external damping flow, so the local relaxation becomes strongly nonuniform across the horizon scale.
+
+\subsection{Postulate of emergent elasticity}
+Standard general relativity treats the gravitational constant $G$ as fixed and encodes dynamics in geometry. General relativity remains the governing theory; the stiffness mapping introduced here is simply a reparameterization of its linear response. As an interpretive layer, gravitational response is rephrased using an induced stiffness field whose gradients act as restoring forces in an effective medium description. A schematic mapping for a local characteristic frequency is
+\begin{equation}
+\omega_{\text{sub}}^2(r)=\omega_{\text{vac}}^2+V_{\text{eff}}(r),
+\end{equation}
+where $V_{\text{eff}}(r)$ is the effective potential of the relevant perturbation equation. This mapping translates the geometric potential barrier into the language of variable stiffness, and it is evaluated through the perturbation equations below.
+
+\section{Operator-Level Descriptors: Strain, Damping, Storage, and Relaxation}
+
+This section introduces a compact bookkeeping vocabulary. These definitions are not claimed to be unique. They are proposed to keep cross-domain mappings explicit.
+
+\paragraph{Methodological Note.}
+The set of descriptors (strain, damping, storage, relaxation) serves as a translation dictionary between domains rather than as a new physical theory. Each term maps established phenomena: FLRW expansion to strain, Hubble friction to damping, gravitational potential to storage, and correlation decay to relaxation. This mapping preserves all mathematical predictions of general relativity and $\Lambda$CDM while providing a unified language for stability analysis.
+
+\subsection{Space as strain}
+
+Large scale geometry is treated as an effective strain field $\epsilon$. In a homogeneous FLRW background, a convenient scalar proxy is
+\begin{equation}
+  \epsilon(t) \sim \ln a(t),
+\end{equation}
+so expansion corresponds to increasing volumetric strain. Local curvature and tidal fields correspond to gradients of strain in this language.
+
+\subsection{Dark energy as viscous response}
+
+As an effective description, a bulk viscosity $\zeta\ge 0$ contributes an effective pressure
+\begin{equation}
+  p_{\text{visc}}=-3\zeta H.
+\end{equation}
+In the linear growth equation for pressureless matter perturbations,
+\begin{equation}
+  \ddot{\delta}+2H\dot{\delta}-4\pi G\rho_m \delta=0,
+  \label{eq:growth}
+\end{equation}
+the term $2H\dot{\delta}$ acts as the effective damping contribution. Thus
+\begin{equation}
+  \gamma_\delta \equiv 2H, \qquad |\omega_\delta| \equiv \sqrt{4\pi G\rho_m},
+\end{equation}
+and the mapped ratio is defined as
+\begin{equation}
+  \chi_\delta \equiv \frac{H}{\sqrt{4\pi G\rho_m}}.
+\end{equation}
+
+\subsection{Dark matter as reactive storage (hypothesis layer)}
+
+As a hypothesis layer, gravitational phenomena may be interpreted as reflecting not only dissipative response but also reactive storage in an effective medium. If an effective bulk modulus $K$ and strain $\epsilon$ are introduced, an elastic storage density takes the schematic form
+\begin{equation}
+  \mathcal{E}_{\text{store}} \simeq \frac{1}{2}K\epsilon^2.
+\end{equation}
+The term ``reactive storage'' is used to describe such a contribution and is employed only as interpretive language. No claim is made that this replaces particle dark matter, nor that a specific microscopic substrate is established here.
+
+\subsection{Time as relaxation}
+
+The characteristic relaxation time for a local linearized generator eigenvalue $\lambda$ is defined as
+\begin{equation}
+  \tau \sim \frac{1}{|\mathrm{Re}\,\lambda|}.
+\end{equation}
+This identifies local time flow with the information update rate of the substrate. In limits where eigenvalues vanish (e.g., vanishing surface gravity $\kappa \to 0$), $\tau$ diverges, reproducing time dilation as stagnation of the update cycle. For a damped oscillator, $\lambda_\pm=-\gamma/2\pm \sqrt{\gamma^2/4-\omega^2}$, so $\chi$ controls which rate dominates and therefore which qualitative settling behavior occurs.
+
+\section{Cosmology: the $\chi_\delta=1$ crossing is an event}
+
+Equation \eqref{eq:growth} yields
+\begin{equation}
+  \chi_\delta^2=\frac{H^2}{4\pi G\rho_m}.
+\end{equation}
+Using $\rho_m=\Omega_m\rho_c$ and $\rho_c=3H^2/(8\pi G)$ gives the exact identity
+\begin{equation}
+  \chi_\delta^2=\frac{2}{3\Omega_m(a)}.
+  \label{eq:chiOmega}
+\end{equation}
+Thus $\chi_\delta=1$ implies $\Omega_m=2/3$. Under flat $\Lambda$CDM, this is equivalent to $q=0$. The $\chi_\delta=1$ condition should be read as a crossing event, not as a present day constraint. Under standard parameters the crossing occurs at redshift $z\sim 0.6$ to $0.7$.
+
+
+\section{Two limiting regimes (structural language, not teleology)}
+\begin{table}[h]
+\centering
+\caption{The Damping Ratio Boundary in Cosmology and Black Holes}
+\label{tab:comparison}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Aspect} & \textbf{Cosmology} & \textbf{Black Holes} \\
+\midrule
+Mapped ratio & $\chi_\delta = H/\sqrt{4\pi G\rho_m}$ & $\chi_{\text{ring}} = \omega_I/|\omega_R|$ \\
+Critical behavior & $\chi_\delta = 1$ crossing & $\chi_{\text{ring}} \to 0$ near extremality \\
+Physical meaning & Growth operator pole coalescence & QNM spectral reorganization \\
+Observable & $q=0$ (acceleration onset) & Ringdown quality factor $Q$ \\
+Failure type & Type B (overdamped) & Type A (underdamped) \\
+Substrate language & Vacuum viscosity dominates & Vacuum stiffness dominates \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The parameter $\chi$ admits two extreme regimes that can be used as a structural classification.
+
+\subsection{Overdamped freeze limit}
+
+When $\chi\gg 1$, damping dominates, transients are monotone, and the effective settling time grows. In the late time $\Lambda$ dominated limit of \eqref{eq:chiOmega}, $\Omega_m\to 0$ so $\chi_\delta\to \infty$. This is a precise statement about the mapped linear growth operator in the asymptotic future of flat $\Lambda$CDM.
+
+\subsection{Underdamped trap limit (motivating black hole discussion)}
+
+When $\chi\ll 1$, oscillatory structure persists and decay is slow relative to the oscillation scale. In black hole contexts, the most robust entry point is not a direct mapping of interior stiffness, but the observable ringdown spectrum. That spectrum provides an empirical handle on the ratio of decay to oscillation for horizon supported modes.
+
+\section{Black holes: ringdown as a data-level $\chi$ ratio}
+\subsection{The Regge-Wheeler stiffness mapping}
+To test the ``gravity as stiffness'' language against standard general relativity, axial perturbations of Schwarzschild are examined, governed by the Regge-Wheeler equation.
+\begin{equation}
+\frac{\partial^2\Psi}{\partial t^2}-\frac{\partial^2\Psi}{\partial r_*^2}+V(r)\Psi=0,
+\end{equation}
+where $r_*$ is the tortoise coordinate and the effective potential is
+\begin{equation}
+V(r)=\left(1-\frac{2M}{r}\right)\left[\frac{\ell(\ell+1)}{r^2}-\frac{6M}{r^3}\right].
+\end{equation}
+If the analysis focuses locally on the time dependence at fixed $r_*$, the term $V(r)\Psi$ plays the role of a position dependent restoring coefficient. In that limited sense, an effective stiffness scale may be defined by
+\begin{equation}
+\omega_{\text{stiff}}^2(r)\equiv V(r).
+\end{equation}
+This identification is not a reduction of the full partial differential equation to a single degree of freedom, since spatial propagation through $\partial_{r_*}^2\Psi$ remains. Rather, it provides a precise dictionary: the effective potential governing scattering and trapping in the geometric description corresponds to a position-dependent restoring stiffness in the effective medium language. The peak of $V(r)$ near the photon sphere marks the maximum of this restoring profile, and black hole ringdown reflects the excitation and leakage of modes associated with this barrier.
+
+\subsection{A kinematic definition from quasinormal modes}
+
+Kerr black hole perturbations admit quasinormal mode solutions with complex frequencies
+\begin{equation}
+  \omega_n=\omega_{R,n}-i\omega_{I,n},\qquad \omega_{I,n}>0.
+\end{equation}
+A single mode contribution behaves as $e^{-i\omega t}=e^{-i\omega_R t}e^{-\omega_I t}$. Comparing with the standard damped oscillator envelope motivates the observationally defined ratio
+\begin{equation}
+  \chi_{\text{ring}}\equiv \frac{\omega_I}{|\omega_R|}.
+\end{equation}
+Writing QNMs as $\omega=\omega_R-i\omega_I$ with $\omega_I>0$, the mode decays as $e^{-\omega_I t}$. Matching to the oscillator envelope $e^{-\gamma t/2}$ yields $\gamma=2\omega_I$ and therefore $\chi\simeq \omega_I/|\omega_R|\equiv \chi_{\text{ring}}$. The ratio is model independent once $\omega_R$ and $\omega_I$ are inferred from ringdown fits.
+
+\subsection{Near extremal spectral reorganization}
+
+As Kerr spin approaches extremality, $a\to M$, the surface gravity $\kappa\to 0$ and the Hawking temperature satisfies $T_H=\kappa/(2\pi)$. In this regime, the QNM spectrum separates into zero-damping modes ($\omega_I \to 0$) and damped modes ($\omega_I \sim \kappa$), with the zero-damping family accumulating on the real axis. This produces a nonuniform spectral limit in the time domain response.
+
+\begin{table}[h]
+\centering
+\caption{Damping ratio for Kerr fundamental mode $n=0$, $\ell=m=2$}
+\label{tab:kerr_chi}
+\begin{tabular}{ccccc}
+\toprule
+$a/M$ & $M\omega_R$ & $M|\omega_I|$ & $\chi_{\text{ring}}$ & $M\kappa$ \\
+\midrule
+0.0 & 0.374 & 0.089 & 0.238 & 0.250 \\
+0.5 & 0.444 & 0.074 & 0.167 & 0.161 \\
+0.7 & 0.501 & 0.061 & 0.122 & 0.103 \\
+0.9 & 0.591 & 0.041 & 0.069 & 0.045 \\
+0.98 & 0.665 & 0.018 & 0.027 & 0.009 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The systematic decrease of $\chi_{\text{ring}}$ with increasing $a/M$ demonstrates approach to the underdamped limit, with $\omega_R/\omega_I \approx 37$ at $a/M = 0.98$.
+
+\paragraph{Result (conservative).}
+Near extremality, Kerr ringdown exhibits a spectral reorganization with an accumulation of QNM frequencies with $\omega_I\to 0$ for a subset of modes, implying $\chi_{\text{ring}}\to 0$ for those modes, while other families retain finite $\chi_{\text{ring}}$. This transition plays the structural role of a separatrix in the non-selfadjoint response problem. This paper does not require the stronger claim of a strict non-Hermitian exceptional point for Kerr, which would demand an explicit demonstration of eigenvector coalescence for the relevant operator and boundary conditions.
+
+\subsection{The horizon as impedance wall}
+The vanishing of tidal Love numbers for classical black holes ($k_2=0$) is usually discussed as a no-hair property in the static response. In the effective medium language, the same result can be interpreted through mechanical impedance. For wave propagation, an impedance proxy can be written as $Z\sim \sqrt{\kappa\rho}$. If the near horizon region corresponds to an extreme contrast in effective stiffness relative to the exterior, the impedance mismatch becomes large and the reflection coefficient approaches unity:
+\begin{equation}
+R=\left(\frac{Z_{\text{in}}-Z_{\text{out}}}{Z_{\text{in}}+Z_{\text{out}}}\right)^2\to 1.
+\end{equation}
+In this picture, the horizon acts as an impedance wall in the low frequency limit: the static tidal deformation is suppressed because the effective stiffness contrast prevents the external field from producing a finite strain response at the boundary. This is offered as an interpretation layer, not a replacement for the standard general relativistic derivations of $k_2=0$. This impedance formulation aligns with the fictitious membrane properties derived in the Membrane Paradigm, but reinterprets them as emergent consequences of a divergence in effective vacuum stiffness rather than as imposed boundary conditions.
+
+\section{Substrate postulates (hypothesis layer, optional)}
+
+This section is explicitly conjectural. It provides a language that can be tested only after a concrete microscopic completion is specified and confronted with precision constraints.
+
+\subsection{Postulate 1: variable effective stiffness}
+
+An effective stiffness scale is introduced that depends on local energy density. At a schematic level, a local characteristic frequency $|\omega(r)|$ is associated with the medium's restoring response. This is intended only as an analogy that motivates why $\chi$ language may be relevant for compact objects.
+
+\subsection{Postulate 2: reactive storage and ``dark'' contributions}
+
+Reactive storage in the effective medium is interpreted as a bookkeeping device for gravitational effects that are not captured by visible baryons. This is not a replacement claim for particle dark matter.
+
+\subsection{Postulate 3: relaxation as an information update rate}
+
+A local relaxation time $\tau(r)$ is associated with the real part of the dominant local generator eigenvalue. The goal is to connect redshift type time dilation language to relaxation of correlations, not to redefine proper time in general relativity.
+
+\subsection{Postulate 4: saturation as a regularization hypothesis}
+
+If the effective medium picture is adopted, it is natural to introduce a saturation scale for effective frequencies to avoid divergent stiffness. This can be expressed as $|\omega(r)|\le \omega_{\max}$. This hypothesis is a regularization proposal, not an established result.
+
+\section{Discussion and outlook}
+The damping ratio formalism reveals a structural homology between cosmic acceleration and black hole ringdown: both correspond to crossings of spectral separatrices in their respective linear response operators. The cosmological $\chi_\delta=1$ boundary marks pole coalescence in the growth propagator, while the black hole $\chi_{\text{ring}}\to 0$ limit reflects spectral reorganization near extremality. Both boundaries involve pole coalescence in non-selfadjoint operators. In cosmology, growth operator poles merge at $\chi_\delta = 1$ where $q=0$. In black holes, QNM poles approach the real axis as $\chi_{\text{ring}} \to 0$ at extremality where $\kappa \to 0$. The parallel structure emerges through $H \leftrightarrow \kappa$ as geometric expansion rates controlling dissipation: Hubble parameter governs cosmological friction while surface gravity governs horizon damping. These boundaries are mathematically distinct but conceptually unified through the damping ratio formalism. This unification is strictly at the level of linear response theory and does not require assumptions about quantum gravity or microscopic spacetime structure.
+
+The strongest statements in this research are spectral and operator level statements: the definition of $\chi_{\text{ring}}$ from QNM fits, the near extremal reorganization of Kerr spectra, and the exact identity $\chi_\delta=1 \Leftrightarrow q=0$ in flat $\Lambda$CDM. The substrate descriptors and stiffness language is proposed as an interpretive layer that aims to unify how stability language applies across domains concerning damping, storage, and relaxation, but it should be treated as a hypothesis until a microscopic model is specified and tested.
+
+Concrete next steps that keep the work falsifiable are:
+\begin{enumerate}
+  \item Derive explicit $\chi_{\text{ring}}(a/M)$ curves for selected Kerr modes and map where the spectrum reorganizes by family.
+  \item Connect the cosmological split and tilt predictions (under evolving dark energy and modified gravity) to current growth data pipelines in a way that produces explicit parameter constraints.
+  \item If a substrate model is pursued, specify a Lagrangian or effective action that yields the proposed storage and dissipation terms without violating local Lorentz invariance or precision tests.
+\end{enumerate}
+Future ringdown spectroscopy will determine whether the stiffness-based interpretation has empirical support.
+
+\section*{Acknowledgments}
+
+This work builds on previous research developed across cosmology, open dynamics, and cross-domain stability analysis. The gravitational wave and cosmology communities are acknowledged for the empirical and theoretical context in which these ideas can be tested.
+
+\begin{thebibliography}{99}
+
+\bibitem{HeissEP}
+W.~D.~Heiss,
+\newblock The physics of exceptional points,
+\newblock J.\ Phys.\ A: Math.\ Theor.\ {\bf 45}, 444016 (2012).
+
+\bibitem{Planck2018}
+Planck Collaboration,
+\newblock Planck 2018 results. VI. Cosmological parameters,
+\newblock Astron.\ Astrophys.\ {\bf 641}, A6 (2020).
+
+\bibitem{Teukolsky}
+S.~A.~Teukolsky,
+\newblock Perturbations of a rotating black hole,
+\newblock Astrophys.\ J.\ {\bf 185}, 635 (1973).
+
+\bibitem{BertiReview}
+E.~Berti, V.~Cardoso, and A.~O.~Starinets,
+\newblock Quasinormal modes of black holes and black branes,
+\newblock Class.\ Quant.\ Grav.\ {\bf 26}, 163001 (2009).
+
+\bibitem{YangZDM}
+H.~Yang, A.~Zimmerman, A.~Zenginoglu, F.~Zhang, E.~Berti, and Y.~Chen,
+\newblock Branching of quasinormal modes for nearly extremal Kerr black holes,
+\newblock Phys.\ Rev.\ D {\bf 87}, 041502 (2013).
+
+\bibitem{Chandrasekhar}
+S.~Chandrasekhar,
+\newblock \emph{The Mathematical Theory of Black Holes},
+\newblock Oxford University Press (1983).
+
+\bibitem{ReggeWheeler}
+T.~Regge and J.~A.~Wheeler,
+\newblock Stability of a Schwarzschild singularity,
+\newblock Phys.\ Rev.\ {\bf 108}, 1063 (1957).
+
+\bibitem{ThorneMembrane}
+K.~S.~Thorne, R.~H.~Price, and D.~A.~MacDonald,
+\newblock \emph{Black Holes: The Membrane Paradigm},
+\newblock Yale University Press (1986).
+
+\bibitem{Zerilli}
+F.~J.~Zerilli,
+\newblock Effective potential for even-parity Regge-Wheeler gravitational perturbation equations,
+\newblock Phys.\ Rev.\ Lett.\ {\bf 24}, 737 (1970).
+
+\bibitem{PressTeukolsky}
+W.~H.~Press and S.~A.~Teukolsky,
+\newblock Perturbations of a rotating black hole. II. Dynamical stability of the Kerr metric,
+\newblock Astrophys.\ J.\ {\bf 185}, 649 (1973).
+
+\bibitem{KokkotasSchmidt}
+K.~D.~Kokkotas and B.~G.~Schmidt,
+\newblock Quasinormal modes of stars and black holes,
+\newblock Living Rev.\ Relativ.\ {\bf 2}, 2 (1999).
+
+\bibitem{CardosoLove}
+V.~Cardoso, E.~Franzin, and P.~Pani,
+\newblock Is the gravitational-wave ringdown a probe of the event horizon?,
+\newblock Phys.\ Rev.\ Lett.\ {\bf 116}, 171101 (2016).
+
+\bibitem{BinningtonPoisson}
+T.~Binnington and E.~Poisson,
+\newblock Relativistic theory of tidal Love numbers,
+\newblock Phys.\ Rev.\ D {\bf 80}, 084018 (2009).
+
+\bibitem{DamourNagar}
+T.~Damour and A.~Nagar,
+\newblock Relativistic tidal properties of neutron stars,
+\newblock Phys.\ Rev.\ D {\bf 80}, 084035 (2009).
+
+\bibitem{Andersson}
+N.~Andersson,
+\newblock A new class of unstable modes of rotating relativistic stars,
+\newblock Astrophys.\ J.\ {\bf 502}, 708 (1998).
+
+\bibitem{Hod}
+S.~Hod,
+\newblock Bohr's correspondence principle and the area spectrum of quantum black holes,
+\newblock Phys.\ Rev.\ Lett.\ {\bf 81}, 4293 (1998).
+
+\bibitem{Maggiore}
+M.~Maggiore,
+\newblock Physical interpretation of the spectrum of black hole quasinormal modes,
+\newblock Phys.\ Rev.\ Lett.\ {\bf 100}, 141301 (2008).
+
+\bibitem{Mukhanov}
+V.~Mukhanov,
+\newblock Physical Foundations of Cosmology,
+\newblock Cambridge University Press (2005).
+
+\bibitem{WeinbergQFT}
+S.~Weinberg,
+\newblock The Quantum Theory of Fields, Vol.~I,
+\newblock Cambridge University Press (1995).
+
+% --- SymC framework papers (author contributions) ---
+\bibitem{ChristensenCosmic}
+N.~Christensen,
+\newblock The Primordial Boundary Principle: Identifying Cosmic Acceleration with Exceptional Point Coalescence,
+\newblock Zenodo repository (2026),
+\newblock DOI: \href{https://doi.org/10.5281/zenodo.18499941}{10.5281/zenodo.18499941
+}.
+
+\bibitem{ChristensenQFT}
+N.~Christensen,
+\newblock Structural Constraints from Critical Damping in Open Quantum Field Theories: Implications for QCD Substrate Inheritance and Phenomenological Extensions,
+\newblock Zenodo repository (2026),
+\newblock DOI: \href{https://doi.org/zenodo.18476360}{https://10.5281/zenodo.18476360}.
+
+\bibitem{ChristensenGaps}
+N.~Christensen,
+\newblock Closing Critical Gaps: Physical Inheritance from Stabilized Substrates in Dynamical Systems,
+\newblock Zenodo repository (2026),
+\newblock DOI: \href{https://doi.org/10.5281/zenodo.18452784}{10.5281/zenodo.18452784}.
+
+
+\end{thebibliography}
+
+\end{document}
