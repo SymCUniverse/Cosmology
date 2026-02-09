@@ -1,0 +1,86 @@
+Figure2_PhaseTransandSink
+
+import numpy as np
+import matplotlib.pyplot as plt
+from pathlib import Path
+
+# --- SVG FIX: Text as actual strings, not paths ---
+plt.rcParams['svg.fonttype'] = 'none'
+plt.rcParams['font.family'] = 'serif'
+
+CRITICAL_MAGENTA = '#C51B7D'
+STABLE_BLUE = '#2196F3'
+
+# ==========================================
+# FIGURE 2: THE COSMIC JOURNEY (REFINED)
+# ==========================================
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(16, 8))
+plt.subplots_adjust(wspace=0.3)
+
+# --- PANEL A: COSMIC SYNCHRONIZATION ---
+z = np.linspace(2.5, -0.5, 100)
+q = 0.5 - (1.5 / (1 + (z + 1)**-3))
+chi = 1 + np.exp(-1.8 * (z - 0.63))
+
+ax1.plot(z, q, color=STABLE_BLUE, lw=4, label='Deceleration q', zorder=5)
+ax1_twin = ax1.twinx()
+ax1_twin.plot(z, chi, color=CRITICAL_MAGENTA, lw=4, ls='--', label='Stability Index χ', zorder=5)
+
+ax1.axvline(0.63, color='black', alpha=0.8, lw=2, ls=':')
+ax1.text(0.63, -0.3, 'Synchronization\nz=0.63', ha='center', fontweight='bold',
+         bbox=dict(facecolor='white', edgecolor='none', alpha=0.7))
+
+ax1.set_xlabel('Redshift z (Lookback Time)', fontsize=12)
+ax1.set_ylabel('Deceleration q', color=STABLE_BLUE, fontsize=13, fontweight='bold')
+ax1_twin.set_ylabel('Stability Index (χ)', color=CRITICAL_MAGENTA, fontsize=13, fontweight='bold')
+ax1.invert_xaxis()
+ax1.set_title('a. Temporal Phase Transition', fontsize=15, fontweight='bold', pad=20)
+
+# --- PANEL B: THE TOPOLOGICAL SINK (FIXED & ENHANCED) ---
+# Create a grid for the vector field
+m_range = np.linspace(0, 1.1, 25)
+de_range = np.linspace(0, 1.1, 25)
+m_grid, de_grid = np.meshgrid(m_range, de_range)
+
+# Define the "Pull" toward the Stability Trap (0.67, 0.33)
+u = 0.67 - m_grid
+v = 0.33 - de_grid
+
+# 1. Background Stability Gradient (Subtle Magenta to Blue)
+# We use an extent that matches our axes
+ax2.imshow(np.flipud(m_grid + de_grid), extent=(0, 1.1, 0, 1.1),
+           cmap='coolwarm', alpha=0.1, aspect='auto', zorder=1)
+
+# 2. Flow Streamlines (The "Precipitation" Action)
+# FIXED: Alpha is now baked into the color tuple (RGBA)
+ax2.streamplot(m_grid, de_grid, u, v, color=(0.5, 0.5, 0.5, 0.25),
+               linewidth=1, arrowsize=1.2, density=1.2, zorder=2)
+
+# 3. Constraint Lines
+# Flat Universe Line (Ωm + ΩΛ = 1)
+ax2.plot([0, 1], [1, 0], color='black', lw=2.5, ls='--', alpha=0.4, label='Flatness Constraint', zorder=3)
+
+# 4. The Stability Trap (EP Interface)
+# Large, high-contrast marker
+ax2.scatter(0.67, 0.33, color='black', edgecolor='white', s=400, zorder=20, linewidth=2.5)
+ax2.text(0.67, 0.42, 'EP Stability Trap\n(χ = 1 Interface)', ha='center',
+         fontweight='bold', fontsize=12, zorder=25)
+
+# 5. Cosmic History Path (The Direct Path of our Universe)
+ax2.annotate('Cosmic Precipitation Path', xy=(0.65, 0.35), xytext=(0.15, 0.85),
+             arrowprops=dict(facecolor=CRITICAL_MAGENTA, edgecolor='none', shrink=0.05, width=5, headwidth=15),
+             fontsize=12, fontweight='bold', color=CRITICAL_MAGENTA, zorder=30)
+
+ax2.set_xlim(0, 1.1)
+ax2.set_ylim(0, 1.1)
+ax2.set_xlabel('Matter Density (Ωm)', fontsize=12, fontweight='bold')
+ax2.set_ylabel('Dark Energy Density (ΩΛ)', fontsize=12, fontweight='bold')
+ax2.set_title('b. Phase Space Attractor: The Topological Sink', fontsize=15, fontweight='bold', pad=20)
+
+# --- SAVE AS SVG & PNG ---
+save_dir = Path.cwd()
+file_base = "Figure2_Topological_Sink_Master"
+plt.savefig(save_dir / f"{file_base}.png", dpi=300, bbox_inches='tight')
+plt.savefig(save_dir / f"{file_base}.svg", format='svg', bbox_inches='tight')
+
+plt.show()

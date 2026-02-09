@@ -1,0 +1,56 @@
+Figure1_Stability_Topography
+
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+from matplotlib.colors import LinearSegmentedColormap
+from pathlib import Path
+
+# SVG Integrity Fix: Text as strings, not shapes
+plt.rcParams['svg.fonttype'] = 'none'
+plt.rcParams['font.family'] = 'serif'
+
+CRITICAL_MAGENTA = '#C51B7D'
+STABLE_BLUE = '#2196F3'
+cmap_custom = LinearSegmentedColormap.from_list("stability", [STABLE_BLUE, CRITICAL_MAGENTA])
+
+fig = plt.figure(figsize=(14, 12))
+ax = fig.add_subplot(111, projection='3d')
+
+# 1. Manifold Mapping
+x_vals = np.linspace(-35, 35, 150); y_vals = np.linspace(-35, 35, 150)
+X, Y = np.meshgrid(x_vals, y_vals)
+Z = 0.5 * (1 + np.tanh((Y - X) / 1.0))
+
+# 2. Render Surface
+ax.plot_surface(X, Y, Z, cmap=cmap_custom, antialiased=True, alpha=0.75, shade=True, zorder=1)
+
+# 3. Territory Labels (SVG Plain Text)
+ax.text(-22, 18, 1.15, "Overdamped Sector\n(Non-Hermitian Vacuum)", color='black', fontweight='bold', fontsize=13, ha='center', zorder=100)
+ax.text(18, -18, 0.15, "Underdamped Basin\n(Coherent Matter)", color='black', fontweight='bold', fontsize=13, ha='center', zorder=100)
+ax.text(0, 0, 0.65, "Exceptional Point (EP) Manifold (Chi = 1)", color='black', fontsize=12, fontweight='bold', ha='center', zorder=110, style='italic')
+
+# 4. Physically Accurate Particle Anchors
+particles = [
+    (8.3, 8.3, 'QCD Substrate', 'D', 350),
+    (11.2, 11.2, 'Top Quark', 'o', 180),
+    (9.0, -20.0, 'Proton', 'o', 180),   # Swapped to correct energy scale
+    (5.7, -15.0, 'Electron', 'o', 180), # Swapped to correct energy scale
+    (-32.0, -32.0, 'Dark Energy', 'o', 180) # Accurate label for this regime
+]
+
+for px, py, lab, mkr, sz in particles:
+    pz = 0.5 * (1 + np.tanh((py - px) / 1.0))
+    # Lifted significantly (+0.07) to ensure they sit ON TOP of the surface
+    ax.scatter([px], [py], [pz + 0.07], color='white', edgecolor='black', linewidth=2.0, s=sz, marker=mkr, zorder=120, depthshade=False)
+    ax.text(px, py, pz + 0.17, lab, color='black', fontsize=11, fontweight='bold', ha='center', zorder=130)
+
+ax.view_init(elev=40, azim=-110)
+ax.set_title('The Stability Waterfall: Physically Accurate Topology', fontsize=18, fontweight='bold', pad=40)
+ax.set_zticks([])
+
+# 5. Export
+save_dir = Path.cwd()
+plt.savefig(save_dir / "Figure1_Final_Physical_Master.png", dpi=300, bbox_inches='tight')
+plt.savefig(save_dir / "Figure1_Final_Physical_Master.svg", format='svg', bbox_inches='tight')
+plt.show()
